@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int row,column;
+    int flag=1;
+    cin>>row>>column;
+    int element=row*column;
+    int matrix[element];
+    int i;
+    // TAKING INPUT
+    for(i=0; i<element; i++)
+    {
+        char c;
+        cin>>c;
+        int d=c;
+        d=d-48;
+        matrix[i]=d;
+    }
+    if(column>1)
+    {
+    // FIRST CONDITION
+    for(i=column; i<element; i=i+column)
+    {
+        if(matrix[i]==matrix[i-column])
+        {
+            flag=0;
+            break;
+        }
+    }
+    // SECOND CONDITION
+    for(i=0; i<element-1; i++)
+    {
+        if((i+1)%column==0)
+        {
+            i++;
+        }
+        if(matrix[i]!=matrix[i+1])
+        {
+            flag=0;
+            break;
+        }
+    }
+    }
+    else if(column==1)
+    {
+        for(i=0; i<element-1;i++)
+        {
+            if(matrix[i]==matrix[i+1])
+            {
+                flag=0;
+                break;
+            }
+        }
+    }
+    if(flag)
+    {
+        cout<<"YES";
+    }
+    else
+    {
+        cout<<"NO";
+    }
+}
