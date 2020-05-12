@@ -1,0 +1,44 @@
+#include<iostream>
+#include<map>
+#include<string>
+#include<iterator>
+
+using namespace std;
+
+
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int n;
+    cin>>n;
+    
+    map<string, int> index;
+    string s1;
+    cin>>s1;
+    index.insert(pair<string, int>(s1,0));
+    cout<<"OK"<<endl;
+    int d=n-1;
+    while(d--)
+    {
+        string s;
+        cin>>s;
+        
+        auto itr1= index.find(s);
+        auto itr2= index.end();
+        
+        // condition for first entry of a name
+        if(itr1==itr2)
+        {
+            index.insert(pair<string, int>(s,0));
+            cout<<"OK"<<endl;
+        }
+        
+        //condition for reptitive entry 
+        else
+        {
+             itr1->second++;
+            cout<<itr1->first<<itr1->second<<endl;
+        }
+    }
+}
